@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      /* height: 100vh; */
+    }
+    table,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px;      
+    }
+    /* Centraliza a tabela de botões */
+    .buttons {
+      margin: 0 auto;
+      border: none;
+    }
+    .buttons td {
+      border: none;
+      padding: 0.25rem 0.5rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+  <form action="">
+    <fieldset style="width: 300px; ">
+      <legend>Dados Pessoais</legend>
+
+      <table>
+        <tr>
+          <td>Nome:</td>
+          <td><input type="text" name="nome"></td>
+        </tr>
+        <tr>
+          <td>Sobrenome:</td>
+          <td><input type="text" name="sobrenome"></td>
+        </tr>
+        <tr>
+          <td>Idade:</td>
+          <td><input type="number" min="1" max="99" name="idade"></td>
+        </tr>
+        <tr>
+          <td>Data de Nascimento:</td>
+          <td><input type="date" name="data_nascimento"></td>
+        </tr>
+      </table>
+<br>
+</fieldset>
+<fieldset>
+  <legend>Dados profissionais</legend>
+<table>
+  <tr>
+    <td>Escolaridade:</td>
+    <td>
+      <select name="escolaridade">
+        <option value="fundamental">Ensino Fundamental</option>
+        <option value="medio">Ensino Médio</option>
+        <option value="superior">Ensino Superior</option>
+        <option value="pos">Pós-Graduação</option>
+        <option value="mestrado">Mestrado</option>
+        <option value="doutorado">Doutorado</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td>Última experiência:</td>
+    <td><input type="text" name="ultima_experiencia"></td>
+  </tr>
+  <tr>
+    <td>Pretenção Salarial:</td>
+    <td><input type="number" min="1620" max="9999" step="100" name="pretencao_salarial" value="1621"></td>
+  </tr>
+</table>
+</fieldset>
+
+      <table class="buttons">
+        <tr>
+          <td><button type="reset">Limpar</button></td>
+          <td><button type="submit">Enviar</button></td>
+        </tr>
+
+      </table>
+
+  </form>
+</main>
+</body>
+
+  <script>
+    (function () {
+      const form = document.querySelector('form');
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const fd = new FormData(form);
+        let rows = '';
+        for (const [name, value] of fd.entries()) {
+          rows += `<tr><td style="padding:6px;border:1px solid #ccc;"><strong>${escapeHtml(name)}</strong></td><td style="padding:6px;border:1px solid #ccc;">${escapeHtml(value)}</td></tr>`;
+        }
+
+        const html = `<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Dados do Formulário</title>
+</head>
+<body>
+  <h2>Dados do Formulário</h2>
+  <table style="border-collapse:collapse;">${rows}</table>
+</body>
+</html>`;
+
+        const w = window.open('', '_blank', 'noopener,noreferrer,width=700,height=500');
+        if (w) {
+          w.document.write(html);
+          w.document.close();
+        } else {
+          alert('Aqui estão os dados:\n\n' + Array.from(fd.entries()).map(([k,v]) => `${k}: ${v}`).join('\n'));
+        }
+      });
+    })();
+  </script>
+
+</html>
