@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O que eu mais gosto em São paulo</title>
+  <link rel="stylesheet" href="css/normalize.css">
+
+  <style>
+    body {
+      background: #FFF1D6 url(images/noise.png);
+      font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, sans-serif;
+      line-height: 1.6;
+    }
+
+    main {
+      margin: 0 auto;
+      width: 960px;
+    }
+
+    .section-header {
+      border: 1px solid #000;
+      height: 100px;
+      margin: 40px auto;
+      width: 400px;
+    }
+
+    h1 {
+      background-color: #990000;
+      color: #FFF;
+      font-size: 1.2em;
+      left: -10px;
+      padding: 5px 0;
+      position: relative;
+      text-align: center;
+      width: 420px;
+    }
+
+    h1::before {
+      border-color: transparent #7C0000 #7C0000 transparent;
+      border-style: solid;
+      border-width: 5px;
+      content: "";
+      left: 0;
+      position: absolute;
+      top: -10px;
+    }
+
+    h1::after {
+      border-color: transparent transparent #7C0000 #7C0000;
+      border-style: solid;
+      border-width: 5px;
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -10px;
+    }
+
+    h1 a {
+      color: #7E9F19;
+      text-decoration: none;
+    }
+
+    h1 a:hover {
+      background-color: #7E9F19;
+      color: #FFF;
+    }
+
+    section {
+      float: left;
+      width: 660px;
+    }
+
+    article {
+      background: #FFF;
+      border-color: #CCC #999 #999 #CCC;
+      border: 1px solid #CCC;
+      margin-bottom: 20px;
+      padding: 10px;
+    }
+
+    article h2 {
+      border-bottom: 1px dashed #7E9F19;
+      margin: 0;
+    }
+
+    article a {
+      color: #2C88A7;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    article img {
+      border: 1px solid #7E9F19;
+      float: left;
+      margin: 10px 10px 0 0;
+      padding: 2px;
+    }
+
+    .clear {
+      clear: both;
+    }
+
+    aside {
+      background-color: #FFFBE4;
+      border: 1px solid #C9BC8F;
+      float: right;
+      padding: 10px;
+      width: 260px;
+    }
+
+    aside h3 {
+      font-size: 14px;
+      margin-top: 0;
+    }
+
+    aside ol {
+      font-size: 12px;
+    }
+
+    footer {
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .help {
+      background-color: #F1EFE6;
+      border: 1px solid #D3CDAE;
+      font-size: 0.9em;
+      padding: 10px;
+      position: relative;
+      /* width: 300px; */
+    }
+
+    .help::before {
+      border-color: transparent #D3CDAE transparent transparent;
+      border-style: solid;
+      border-width: 14px;
+      content: "";
+      left: -28px;
+      margin-top: -14px;
+      position: absolute;
+      top: 50%;
+    }
+
+    .tip::before {
+      /* content: "✉"; */
+      content: "\261E";
+      margin-right: 10px;
+      font-size: 34px;
+    }
+
+    blockquote {
+      color: #444;
+      font-style: italic;
+    }
+
+    blockquote::before,
+    blockquote::after {
+      color: #000;
+      font-size: 3em;
+    }
+
+    blockquote::before {
+      content: "\201C";
+    }
+
+    blockquote::after {
+      content: "\201D";
+    }
+
+    .button {
+      background-color: #999999;
+      color: white;
+      display: inline-block;
+      font-weight: bold;
+      padding: 0.5em 1em;
+      text-decoration: none;
+    }
+
+    .primary-button {
+      background-color: #389739;
+    }
+
+    .big-button {
+      font-size: 1.1em;
+    }
+
+    .small-button {
+      font-size: 0.9em;
+    }
+    
+  </style>
+
+</head>
+
+<body>
+  <main>
+    <div class="section-header">
+      <h1><a href="">O que eu mais gosto em São paulo</a></h1>
+    </div>
+    <nav>
+      <a href="#" class="button primary-button big-button">Enviar mensagem</a>
+      <a href="#" class="button small-button">Cancelar</a>      
+    </nav>
+    <p></p>
+    <section>
+      <article>
+        <h2>Passear na Avenida Paulista</h2>
+        <img src="images/paulista.jpg"
+          alt="O céu da avenida Paulista, foto por http://www.flickr.com/photos/jairo_abud">
+        <p class="tip">
+          Um dos principais centros financeiros da cidade, a avenida Paulista também possui diversas opções de
+          entretenimento.
+          Endereço do Museu de Arte de São Paulo, <em>MASP</em>, do Teatro Gazeta e muitos outros, a região é de fácil
+          acesso
+          graças as diversas linhas de ônibus que cruzam a avenida e a linha de metrô que passa por baixo dela.
+        </p>
+        <p>
+          A Avenida Paulista sempre é assunto. O que será que estão falando a respeito no <a
+            href="https://twitter.com/#!/search/Avenida Paulista" target="_blank">Twitter</a>?
+        </p>
+        <div class="clear"></div>
+      </article>
+
+      <article>
+        <h2>Os bares da Vila Madalena</h2>
+        <img src="images/piola.jpg" alt="A varanda do Armazém Piola, foto por Fernando Moraes">
+        <p class="tip">
+          Depois de um dia de trabalho, nada melhor do que um bom chopp, um petisco e uma conversa em uma mesa de bar.
+          Opções de sobra na região das ruas Aspicuelta, Fradique Coutinho e Wisard.
+        </p>
+        <p>
+          Veja quais os melhores bares e restaurantes da região no <a
+            href="http://vejasp.abril.com.br/busca?chn=bares&qu=&nbh=Pinheiros%20/%20Vila%20Madalena" target="_blank">
+            Guia da VEJA São Paulo.
+          </a>
+        </p>
+        <div class="clear"></div>
+      </article>
+
+      <article>
+        <h2>O Parque do Ibirapuera</h2>
+        <img src="images/ibirapuera.jpg" alt="O Parque do Ibirapuera, por http://www.flickr.com/photos/soldon/">
+        <p class="tip">
+          Um dos cartões postais da cidade, o parque dispõe de mais de 1,5 km{^2} de área verde, lagos artificiais e
+          pistas de cooper e ciclismo. E se isso não fosse o suficiente, o parque costuma ser palco de diversos eventos
+          culturais ao longo do ano.
+        </p>
+        <p>
+          Veja no <a href="http://goo.gl/maps/HoH8" target="_blank">mapa</a> como chegar ao parque.
+        </p>
+        <div class="clear"></div>
+      </article>
+      <article>
+        <h2>Atenção</h2>
+        <p>
+        <blockquote>
+          O problema com citações na Internet é que você não pode confirmar a sua veracidade.
+        </blockquote>
+        </p>
+        <div class="clear"></div>
+      </article>
+    </section>
+    <aside>
+      <h3>E existem muitos outros lugares interessantes na cidade...</h3>
+      <ol>
+        <li>O Mercado Municipal.</li>
+        <li>A Sala São Paulo.</li>
+        <li>Os estádios dos principais times de futebol da cidade.</li>
+        <li>Diversos museus, como o Memorial da América Latina, Museu da Língua Portuguesa e o Museu do Ipiranga.
+        </li>
+        <li>E mais!</li>
+      </ol>
+      <p class="help">
+        Preencha o campo com um e-mail válido, assim poderemos entrar em contato com você!
+      </p>
+    </aside>
+
+    <footer>
+      <div class="footer clear">
+        <p>Parte do livro "HTML5 e CSS3: Domine a web do futuro."</p>
+      </div>
+    </footer>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
