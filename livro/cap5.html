@@ -63,6 +63,7 @@
       margin-right: auto;
       text-align: center;
       display: block;
+      margin-top: 20px;
     }
 
     .tnt {
@@ -84,7 +85,7 @@
       width: 50px;
     }
 
-    div {
+    .div-cloud {
       background-color: #000;
       width: 50px;
       height: 10px;
@@ -141,19 +142,49 @@
     }
 
     figcaption {
+      background-color: #000;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #FFF;
       bottom: 5px;
       margin: 0 5px;
       padding: 5px;
       position: absolute;
       width: 300px;
     }
+
+    ul {
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      height: 35px;
+      list-style: none;
+      background-color: #CCC;
+      color: white;
+      /* padding: 0; 
+      width: 210px;*/
+    }
+
+    li {
+      border-left: 1px solid rgba(255, 255, 255, 0.3);
+      border-right: 1px solid rgba(0, 0, 0, 0.3);
+      display: inline-block;
+      /* float: left; */
+      line-height: 35px;
+      font-size: 0.9em;
+      width: 50px;
+      text-align: center;
+    }
+
+    li:first-child {
+      border-left: none;
+    }
+
+    li:last-child {
+      border-right: none;
+    }
   </style>
 </head>
 
 <body>
   <main>
-
-
     <h1 class="lobster-regular">Usando a forte Lobster!</h1>
     <p class="lobster-regular">Este é um parágrafo com fonte personalizada.</p>
     <hr>
@@ -166,12 +197,17 @@
     <p class="icon-ok">E-mail enviado com sucesso!</p>
     <p class="icon-invalid">Atenção, preencha todos os campos do formulário
     </p>
+
+    <hr>
+
     <h3 class="tnt centralizado">TNT</h3>
     <span class="counter centralizado">37</span>
 
-    <div class="centralizado" style="margin-top: 20px;">
+    <div class="div-cloud centralizado">
       <span class="cloud"></span>
     </div>
+
+    <hr>
 
     <figure>
       <img src="images/sf.jpg" alt="A Golden Gate.">
@@ -182,6 +218,17 @@
         </small>
       </figcaption>
     </figure>
+
+    <hr>
+
+    <div class="centralizado">
+      <ul>
+        <li>Um</li>
+        <li>Dois</li>
+        <li>Três</li>
+        <li>Quatro</li>
+      </ul>
+    </div>
   </main>
 </body>
 
