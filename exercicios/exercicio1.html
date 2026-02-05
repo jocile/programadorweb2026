@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* Clearfix para a imagem não sair do conteiner */
+    figure {
+      clear: both;
+      margin-inline-end: 5px;
+    }
+
+    /* Imagem a direita do parágrafo */
+    img {
+      float: right;
+      padding-left: 10px;
+      padding-top: 30px;
+    }
+
+    /* Borda no Article */
+    article {
+      border: 1px solid black;
+      padding: 5px;
+      display: flow-root;
+    }
+
+    /* Alinhar o texto justificado */
+    p {
+      text-align: justify;
+    }
+
+    .texto {
+      text-align: center;
+      border: 1px solid black;
+      padding: 5px;
+
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <article>
+      <h1>Manipulando o DOM com JavaScript!</h1>
+      <figure>
+        <img id="zoom" src="https://picsum.photos/200/300" alt="imagem aleatória">
+      </figure>
+      <div class="texto">
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate ut facere, nostrum sed veniam non cumque
+          eaque reprehenderit dolores sint. Nostrum, libero. Nihil harum aperiam recusandae modi animi incidunt ratione.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Harum velit, voluptatibus nemo, repudiandae dolor
+          dolorem accusamus recusandae quod a nihil magnam porro atque! Quas quae quaerat, sapiente quo accusantium
+          expedita.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente impedit error non eius nesciunt commodi,
+          rem excepturi dolore officiis vero. Beatae dicta quis inventore et nostrum molestiae architecto eius itaque?
+        </p>
+        <!-- Adicionando um botão de zoom -->
+        <button type="button"
+          onclick="document.getElementById('zoom').style.width='400px'; document.getElementById('zoom').style.height='600px';">Zoom
+          +</button>
+        <button type="button"
+          onclick="document.getElementById('zoom').style.width='200px'; document.getElementById('zoom').style.height='300px';">Zoom
+          -</button>
+        <button type="button" onclick="document.getElementById('zoom').style.display='none'">Ocultar</button>
+        <button type="button" onclick="document.getElementById('zoom').style.display='block'">Exibir</button>
+      </div>
+    </article>
+    <article>
+      <h2 id="id1">Manipulando a fonte com JavaScript!</h2>
+      <button type="button" onclick="document.getElementById('id1').style.fontSize ='30px'">Aumentar Fonte</button>
+      <button type="button" onclick="document.getElementById('id1').style.fontSize ='10px'">Diminuir
+        Fonte</button>
+      <button type="button" onclick="document.getElementById('id1').style.color='red'">Mudar cor
+      </button>
+      <button type="button" onclick="document.getElementById('id1').style.color='black'">preto
+      </button>
+    </article>
+    <hr>
+    <article>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore natus expedita deleniti alias vitae sit debitis
+        iusto? Ex, officia itaque temporibus vel, ea expedita unde architecto, similique autem fuga magnam?</p>
+    </article>
+  </main>
+</body>
+
+</html>
