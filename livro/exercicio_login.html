@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atividade: Blog com Modal</title>
+  <link rel="stylesheet" href="css/exercicio_blog.css">
+  <script src="js/jquery.min.js"></script>
+  <style>
+    /* 1. O palco da animação */
+    .container-login {
+      height: 300px;
+      perspective: 500px;
+      /* Define a profundidade do plano 3D */
+      position: relative;
+      width: 200px;
+    }
+
+    /* 2. O corpo do cartão que gira */
+    .card {
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      /* Garante que os filhos fiquem no espaço 3D */
+      transition: transform 1s;
+      /* Duração da animação de giro */
+      width: 100%;
+    }
+
+    /* 3. Configuração das faces (Login e Cadastro) */
+    .card section {
+      backface-visibility: hidden;
+      /* Esconde o verso invertido */
+      background-color: #FFF;
+      border-radius: 5px;
+      position: absolute;
+      /* Empilha as seções */
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 4. Colocando o formulário de cadastro de costas */
+    .signup {
+      transform: rotateY(180deg);
+    }
+
+    /* 5. Classe que dispara a rotação total */
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Meu Blog de Viagens</h1>
+  </header>
+
+  <div class="container clearfix">
+    <main class="content">
+      <article>
+        <h2>Explorando as Montanhas</h2>
+        <div class="image-container">
+          <img src="images/paulista.jpg" alt="Paisagem de montanhas">
+          <span class="tag-destaque">Destaque</span>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim
+          sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a,
+          semper congue, euismod non, mi.</p>
+        <p>Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis
+          semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue.</p>
+      </article>
+    </main>
+
+    <aside class="sidebar">
+      <h3>Posts Populares</h3>
+      <ul>
+        <li><a href="#">Praias Paradisíacas</a></li>
+        <li><a href="#">Cidades Históricas</a></li>
+        <li><a href="#">Aventuras na Selva</a></li>
+      </ul>
+    </aside>
+  </div>
+
+  <footer>
+    <p>Rodapé do Blog. &copy; 2026</p>
+    <div class="info-extra">Info</div>
+  </footer>
+
+  <button id="open-modal">Inscreva-se na Newsletter</button>
+
+  <!-- Estrutura do Modal -->
+  <div class="overlay"></div>
+  <div class="modal">
+    <!-- 1. O container que define o espaço 3D -->
+    <div class="container-login">
+
+      <!-- 2. O cartão que sofrerá a rotação -->
+      <div class="card">
+
+        <!-- 3. Face Frontal: Formulário de Login -->
+        <section class="signin">
+          <form>
+            <h2>Entrar no site</h2>
+            <p>
+              <label for="user_email">E-mail</label>
+              <input type="email" id="user_email">
+            </p>
+            <p>
+              <label for="user_password">Senha</label>
+              <input type="password" id="user_password">
+            </p>
+            <button>Enviar!</button>
+            <!-- Link para girar para o cadastro -->
+            <a href="javascript:;" class="toggle">Quero me cadastrar</a>
+          </form>
+        </section>
+
+        <!-- 4. Face Traseira: Formulário de Cadastro -->
+        <section class="signup">
+          <form>
+            <h2>Cadastre-se agora!</h2>
+            <p>
+              <label for="account_email">E-mail</label>
+              <input type="email" id="account_email">
+            </p>
+            <p>
+              <label for="account_password">Senha</label>
+              <input type="password" id="account_password">
+            </p>
+            <button>Enviar!</button>
+            <!-- Link para girar de volta para o login -->
+            <a href="javascript:;" class="toggle">Já estou cadastrado no site</a>
+          </form>
+        </section>
+
+      </div> <!-- Fim do .card -->
+    </div> <!-- Fim do .container -->
+  </div>
+
+  <script>
+    // Garante que o código execute após o carregamento da página
+    jQuery(function ($) {
+
+      // 1. Monitora o clique em qualquer link ('a') dentro das seções do formulário
+      $('section').on('click', 'a', function (e) {
+
+        // Evita que o link tente navegar para outra página
+        e.preventDefault();
+
+        // 2. Seleciona o elemento .card e alterna a classe 'flipped'
+        // Isso dispara a transição CSS3 de rotação em 3D
+        $('.card').toggleClass('flipped');
+
+      });
+
+    });
+  </script>
+  <script src="js/exercicio_blog.js"></script>
+</body>
+
+</html>
