@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Média Artimética</title>
+</head>
+
+<body>
+  <h1>Média Artimética das notas</h1>
+  <form action="">
+    <fieldset>
+      <legend>Notas</legend>
+      <table>
+        <tr>
+          <td><label for="">Nota 1:</label> </td>
+          <td><input type="number" name="nota1" min="0" max="10"></td>
+        </tr>
+        <tr>
+          <td><label for="">Nota 2:</label> </td>
+          <td><input type="number" name="nota2" min="0" max="10"></td>
+        </tr>
+        <tr>
+          <td><label for="">Nota 3:</label> </td>
+          <td><input type="number" name="nota3" min="0" max="10"></td>
+        </tr>
+        <tr>
+          <td><label for="">Nota 4:</label> </td>
+          <td><input type="number" name="nota4" min="0" max="10"></td>
+        </tr>
+        <tr>
+          <td><label for="">Média:</label> </td>
+          <td><span id="media"></span></td>
+        </tr>
+
+      </table>
+      <button onclick="calcularMedia()">Calcular</button>
+
+    </fieldset>
+  </form>
+
+  <script>
+    // Prevenir recarregamento da página ao enviar o formulário
+    document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+    });
+
+    // Função para calcular a média
+
+    function calcularMedia() {
+      const form = document.querySelector('form');
+      const fd = new FormData(form);
+      let media = 0;
+      let nota1 = parseFloat(fd.get('nota1'));
+      let nota2 = parseFloat(fd.get('nota2'));
+      let nota3 = parseFloat(fd.get('nota3'));
+      let nota4 = parseFloat(fd.get('nota4'));
+      media += nota1 + nota2 + nota3 + nota4;
+      media = media.toFixed(2);
+      document.getElementById('media').innerHTML = 'A média é: ' + (media / 4);
+    }
+  </script>
+</body>
+
+</html>

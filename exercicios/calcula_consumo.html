@@ -9,7 +9,8 @@
 
 <body>
   <h1>Cálculo de consumo de combustível</h1>
-  <h3>Álcool ou Gasolina?</h3>
+  <hr>
+  <h2>Álcool ou Gasolina?</h2>
   <ol>
     <li>Crie um novo arquivo, o calcula_consumo.html, colocando um título de destaque na primeira linha:</li>
     <li>Seu carro tem um tanque de 40 litros. Com gasolina, e usando todo o tanque, você fez um caminho com gasolina de
@@ -25,19 +26,43 @@
   </ol>
   <p id="alcool"></p>
 
+  <hr>
+  <h2>Agora um desafio.</h2>
+  <h3> Hoje, o preco Da Gasolina está R$6.30 e o preco Do Alcool R$5.40</h3>
+
+  <ol>
+    <li>Qual é o preco Por Kilometro, tanto do álcool quanto da gasolina? Resp.:
+      <span id="preco"></span>
+    </li>
+    <li>Dica: dividindo o preço do litro pelo consumo, temos o preço por quilometro.</li>
+    <li>Qual é o menor deles? Resp.:
+      <span id="menorPreco"></span>
+    </li>
+  </ol>
+
   <script>
     var distanciaGasolina = 480
     var litros = 40
-    var consumo = distanciaGasolina / litros
+    var consumoGasolina = distanciaGasolina / litros
 
-    document.getElementById('gasolina').innerHTML = 'O consumo de gasolina é: ' + consumo + 'km/l';
+    document.getElementById('gasolina').innerHTML = 'O consumo de gasolina é: ' + consumoGasolina + 'km/l';
 
     var distanciaAlcool = 300
     var litros = 40
-    var consumo = distanciaAlcool / litros
-    document.getElementById('alcool').innerHTML = 'O consumo de álcool é: ' + consumo + 'km/l';
+    var consumoAlcool = distanciaAlcool / litros
+    document.getElementById('alcool').innerHTML = 'O consumo de álcool é: ' + consumoAlcool + 'km/l';
 
+    var precoGasolina = 6.30
+    var precoAlcool = 5.40
+    var precoPorKmGasolina = (precoGasolina / consumoGasolina).toFixed(2)
+    var precoPorKmAlcool = (precoAlcool / consumoAlcool).toFixed(2)
 
+    document.getElementById('preco').innerHTML = 'O preço por Km da gasolina é: R$ ' + precoPorKmGasolina + ' e do Alcool é: R$ ' + precoPorKmAlcool
+    if (precoPorKmGasolina < precoPorKmAlcool) {
+      document.getElementById('menorPreco').innerHTML = 'O menor é a gasolina'
+    } else {
+      document.getElementById('menorPreco').innerHTML = 'O menor é o álcool'
+    }
   </script>
 
 </body>
