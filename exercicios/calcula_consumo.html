@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcula consumo</title>
+</head>
+
+<body>
+  <h1>Cálculo de consumo de combustível</h1>
+  <h3>Álcool ou Gasolina?</h3>
+  <ol>
+    <li>Crie um novo arquivo, o calcula_consumo.html, colocando um título de destaque na primeira linha:</li>
+    <li>Seu carro tem um tanque de 40 litros. Com gasolina, e usando todo o tanque, você fez um caminho com gasolina de
+      480 quilômetros. Qual é coconsumo De Gasolina? </li>
+    <li> Para calculá-lo, divida a distância percorrida pela quantidade de litros gasto.</li>
+    <li>Imprima esse valor,</li>
+  </ol>
+  <p id="gasolina"></p>
+
+  <ol>
+    <li>Já com álcool, o mesmo tanque de 40 litros fez um caminhoComAlcool de 300 quilômetros. Qual é o consumoDeAlcool?
+    </li>
+  </ol>
+  <p id="alcool"></p>
+
+  <script>
+    var distanciaGasolina = 480
+    var litros = 40
+    var consumo = distanciaGasolina / litros
+
+    document.getElementById('gasolina').innerHTML = 'O consumo de gasolina é: ' + consumo + 'km/l';
+
+    var distanciaAlcool = 300
+    var litros = 40
+    var consumo = distanciaAlcool / litros
+    document.getElementById('alcool').innerHTML = 'O consumo de álcool é: ' + consumo + 'km/l';
+
+
+  </script>
+
+</body>
+
+</html>
