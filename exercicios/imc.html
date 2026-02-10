@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cálculo do IMC</title>
+</head>
+
+<body>
+  <h1>Cálculo do IMC</h1>
+  <h2>Como está seu peso? Saudável?</h2>
+
+  <p>Índice de Massa Corporal, o IMC, é um indicador do grau de obesidade de uma pessoa. Pode ser uma primeira forma de
+    ter um sinal de que alguém está muito gordo ou muito magro. A fórmula do IMC é simples: peso dividido pelo quadrado
+    da altura.
+  </p>
+  <form name="imc">
+    <fieldset>
+      <legend>Cálculo do IMC</legend>
+      <input type="number" name="peso" placeholder="Peso em kilo" min="0" max="350" required step="5">
+      <input type="number" name="altura" placeholder="Altura em metros" min="0" max="3" required step="0.1">
+      <button type="submit" onclick="calcularImc()">Calcular</button>
+      <button type="reset">Limpar</button>
+    </fieldset>
+  </form>
+  <p id="resposta"></p>
+
+  <h2>Peso ideal</h2>
+  <p>Faça um algoritmo para calcular o peso ideal de uma pessoa sabendo sua altura.</p>
+  <p id="peso-ideal"></p>
+
+  <script>
+    // Prevenir recarregamento da página ao enviar o formulário
+    document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+    });
+
+    // Função para calcular o IMC
+
+    function calcularImc() {
+      var peso = document.forms.imc.peso.value;
+      var altura = document.forms.imc.altura.value;
+      var imc = peso / (altura * altura);
+      //alert("meu IMC é: " + imc);
+      document.getElementById("resposta").innerHTML = "O IMC é: " + imc.toFixed(2);
+
+      var pesoHomens = (52.7 * altura);
+      var pesoMulheres = (32.1 * altura);
+      document.getElementById("peso-ideal").innerHTML = "O peso ideal para homens é: " + pesoHomens.toFixed(2) + "kg e para mulheres é: " + pesoMulheres.toFixed(2) + "kg";
+    }
+  </script>
+
+</body>
+
+</html>
