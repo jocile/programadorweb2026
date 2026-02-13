@@ -9,26 +9,55 @@
 </head>
 
 <body>
-  <h1>Cidades do Ceará</h1>
+  <!-- fonte: https://www.youtube.com/watch?v=2FjU6DbY9v8 -->
+  <h1>Cidades por estado</h1>
 
-  <!-- fonte: https://www.youtube.com/watch?v=_mD8JKi5YCE
-              https://www.youtube.com/watch?v=2FjU6DbY9v8
-  <div id="listaM"></div> -->
+  <select name="estados" id="uf"></select>
+
   <select name="municipios" id="municipios"></select>
 
+  <div id="info-municipio"></div>
+
   <script>
-    let url = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/CE/municipios'
-    $.getJSON(url, function (data) {
-      //let conteudo = '<ul>';
-      let conteudo = '<optiongroup>';
-      $.each(data, function (v, val) {
-        //conteudo += '<li>' + val.nome + '</li>';
-        conteudo += '<option>' + val.nome + '</option>';
+    // 1. URL para obter os estados ordenados por nome
+    const urlEstados = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome';
+
+    // 2. Preencher o select de estados assim que a página carregar
+    $.getJSON(urlEstados, function (data) {
+      let itens = '<option value="">Selecione o Estado</option>';
+      $.each(data, function (key, val) {
+        itens += `<option value="${val.sigla}">${val.sigla} - ${val.nome}</option>`;
       });
-      //conteudo += '</ul>';
-      conteudo += '</optiongroup>';
-      //$('#listaM').html(conteudo);
-      $('#municipios').html(conteudo);
+      $('#uf').html(itens);
+    });
+
+    // 3. Carregar os municípios quando um estado for selecionado
+    $('#uf').change(function () {
+      let uf = $(this).val();
+      let url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`;
+
+      $('#info-municipio').empty(); // Limpa informações anteriores ao trocar de estado
+
+      $.getJSON(url, function (data) {
+        let conteudo = '<option value="">Selecione o Município</option>';
+        $.each(data, function (v, val) {
+          conteudo += `<option value="${val.id}">${val.nome}</option>`;
+        });
+        $('#municipios').html(conteudo);
+      });
+    });
+
+    // 4. Mostrar informações do município selecionado
+    $('#municipios').change(function () {
+      let municipioId = $(this).val();
+      if (!municipioId) return;
+
+      let url = `https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${municipioId}`;
+
+      $.getJSON(url, function (data) {
+        let info = `<h3>${data.nome}</h3><p>Microrregião: ${data.microrregiao.nome}</p><p>Mesorregião: ${data.microrregiao.mesorregiao.nome}</p><p>Região: ${data.microrregiao.mesorregiao.UF.regiao.nome}</p>`;
+        $('#info-municipio').html(info);
+      });
     });
   </script>
 
