@@ -18,6 +18,10 @@
     // 1. URL para obter os estados ordenados por nome
     const urlEstados = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome';
 
+    const ufSelect = document.getElementById('uf');
+    const municipioSelect = document.getElementById('municipios');
+    const infoDiv = document.getElementById('info-municipio');
+
     // 2. Preencher o select de estados assim que a página carregar
     fetch(urlEstados)
       .then(response => response.json())
@@ -26,20 +30,20 @@
         data.forEach(val => {
           itens += `<option value="${val.sigla}">${val.sigla} - ${val.nome}</option>`;
         });
-        $('#uf').html(itens);
+        ufSelect.innerHTML = itens;
       })
       .catch(error => {
         console.error("Erro ao carregar estados:", error);
-        $('#uf').html('<option>Erro ao carregar</option>');
+        ufSelect.innerHTML = '<option>Erro ao carregar</option>';
       });
 
     // 3. Carregar os municípios quando um estado for selecionado
-    $('#uf').change(function () {
-      let uf = $(this).val();
+    ufSelect.addEventListener('change', function () {
+      let uf = this.value;
       if (!uf) return;
       let url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`;
 
-      $('#info-municipio').empty(); // Limpa informações anteriores ao trocar de estado
+      infoDiv.innerHTML = ''; // Limpa informações anteriores ao trocar de estado
 
       fetch(url)
         .then(response => response.json())
@@ -48,17 +52,17 @@
           data.forEach(val => {
             conteudo += `<option value="${val.id}">${val.nome}</option>`;
           });
-          $('#municipios').html(conteudo);
+          municipioSelect.innerHTML = conteudo;
         })
         .catch(error => {
           console.error("Erro ao carregar municípios:", error);
-          $('#municipios').html('<option>Erro ao carregar</option>');
+          municipioSelect.innerHTML = '<option>Erro ao carregar</option>';
         });
     });
 
     // 4. Mostrar informações do município selecionado
-    $('#municipios').change(function () {
-      let municipioId = $(this).val();
+    municipioSelect.addEventListener('change', function () {
+      let municipioId = this.value;
       if (!municipioId) return;
 
       let url = `https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${municipioId}`;
@@ -67,11 +71,11 @@
         .then(response => response.json())
         .then(data => {
           let info = `<h3>${data.nome}</h3><p>Microrregião: ${data.microrregiao.nome}</p><p>Mesorregião: ${data.microrregiao.mesorregiao.nome}</p><p>Região: ${data.microrregiao.mesorregiao.UF.regiao.nome}</p>`;
-          $('#info-municipio').html(info);
+          infoDiv.innerHTML = info;
         })
         .catch(error => {
           console.error("Erro ao carregar informações:", error);
-          $('#info-municipio').html('<p>Erro ao carregar informações do município.</p>');
+          infoDiv.innerHTML = '<p>Erro ao carregar informações do município.</p>';
         });
     });
   </script>
